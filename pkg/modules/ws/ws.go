@@ -7,7 +7,6 @@ import (
 	"github.com/gorilla/websocket"
 	"github.com/socketbase/socketbase/pkg/server"
 	"github.com/socketbase/socketbase/pkg/types"
-	"go.uber.org/fx"
 )
 
 var upgrader = websocket.Upgrader{
@@ -36,8 +35,3 @@ func NewWSModule() types.Module {
 func handleWebSocket(c *gin.Context) {
 	upgrader.Upgrade(c.Writer, c.Request, nil)
 }
-
-var WS = fx.Annotate(
-	NewWSModule,
-	fx.ResultTags(`group:"routes"`),
-)

@@ -26,10 +26,9 @@ type ServerParams struct {
 func NewServer(params ServerParams) *gin.Engine {
 	app := gin.Default()
 
-	api := app.Group("/api")
-
 	for _, group := range params.RouteGroups {
-		router := api.Group(group.Prefix)
+		router := app.Group(group.Prefix)
+
 		for _, route := range group.Routes {
 			middlewares := []gin.HandlerFunc{}
 

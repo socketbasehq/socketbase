@@ -5,14 +5,12 @@ import (
 	"github.com/socketbase/socketbase/middlewares"
 	"github.com/socketbase/socketbase/pkg/server"
 	"github.com/socketbase/socketbase/pkg/types"
-
-	"go.uber.org/fx"
 )
 
 func NewUsersModule() types.Module {
 	return types.Module{
 		Routes: server.RouteGroup{
-			Prefix: "/users",
+			Prefix: "/api/users",
 			Middlewares: []gin.HandlerFunc{
 				middlewares.CheckAuth,
 			},
@@ -20,8 +18,3 @@ func NewUsersModule() types.Module {
 		},
 	}
 }
-
-var Users = fx.Annotate(
-	NewUsersModule,
-	fx.ResultTags(`group:"routes"`),
-)

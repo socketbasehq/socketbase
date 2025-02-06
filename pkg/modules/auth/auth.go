@@ -5,13 +5,12 @@ import (
 	"github.com/socketbase/socketbase/middlewares"
 	"github.com/socketbase/socketbase/pkg/server"
 	"github.com/socketbase/socketbase/pkg/types"
-	"go.uber.org/fx"
 )
 
 func NewAuthModule() types.Module {
 	return types.Module{
 		Routes: server.RouteGroup{
-			Prefix: "/auth",
+			Prefix: "/api/auth",
 
 			Routes: []server.Route{
 				{
@@ -36,8 +35,3 @@ func NewAuthModule() types.Module {
 		},
 	}
 }
-
-var Auth = fx.Annotate(
-	NewAuthModule,
-	fx.ResultTags(`group:"routes"`),
-)
