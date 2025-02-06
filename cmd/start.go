@@ -2,9 +2,9 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/socketbase/socketbase/internal/db"
-	"github.com/socketbase/socketbase/internal/modules"
-	"github.com/socketbase/socketbase/internal/pkg/server"
+	"github.com/socketbase/socketbase/pkg/db"
+	"github.com/socketbase/socketbase/pkg/modules"
+	"github.com/socketbase/socketbase/pkg/server"
 	"github.com/spf13/cobra"
 	"go.uber.org/fx"
 )

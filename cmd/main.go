@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/socketbase/socketbase/internal/config"
+	"github.com/socketbase/socketbase/pkg/config"
 	"github.com/spf13/cobra"
 )
 
