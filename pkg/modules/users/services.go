@@ -1,8 +1,8 @@
 package users
 
 import (
-	"github.com/socketbase/socketbase/pkg/db"
-	"github.com/socketbase/socketbase/pkg/models"
+	"github.com/socketbasehq/socketbase/pkg/pkg/db"
+	"github.com/socketbasehq/socketbase/pkg/pkg/models"
 )
 
 func CreateUser(user *models.User) error {

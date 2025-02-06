@@ -1,8 +1,8 @@
 package socketbase
 
 import (
-	"github.com/socketbase/socketbase/pkg/server"
-	"github.com/socketbase/socketbase/pkg/types"
+	"github.com/socketbasehq/socketbase/pkg/pkg/server"
+	"github.com/socketbasehq/socketbase/pkg/pkg/types"
 )
 
 func NewSocketbaseModule() types.Module {

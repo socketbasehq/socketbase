@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/socketbase/socketbase/migrate"
+	"github.com/socketbasehq/socketbase/pkg/migrate"
 	"github.com/spf13/cobra"
 )
 

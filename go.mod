@@ -1,4 +1,4 @@
-module github.com/socketbase/socketbase
+module github.com/socketbasehq/socketbase/pkg
 
 go 1.23.1
 

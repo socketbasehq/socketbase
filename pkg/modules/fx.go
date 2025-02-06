@@ -1,11 +1,11 @@
 package modules
 
 import (
-	"github.com/socketbase/socketbase/pkg/modules/apps"
-	"github.com/socketbase/socketbase/pkg/modules/auth"
-	"github.com/socketbase/socketbase/pkg/modules/socketbase"
-	"github.com/socketbase/socketbase/pkg/modules/users"
-	"github.com/socketbase/socketbase/pkg/modules/ws"
+	"github.com/socketbasehq/socketbase/pkg/pkg/modules/apps"
+	"github.com/socketbasehq/socketbase/pkg/pkg/modules/auth"
+	"github.com/socketbasehq/socketbase/pkg/pkg/modules/socketbase"
+	"github.com/socketbasehq/socketbase/pkg/pkg/modules/users"
+	"github.com/socketbasehq/socketbase/pkg/pkg/modules/ws"
 
 	"go.uber.org/fx"
 )

@@ -24,7 +24,7 @@ docker run -p 8000:8000 socketbase/socketbase
 
 ```bash
 # Clone the repository
-git clone https://github.com/socketbase/socketbase.git
+git clone https://github.com/socketbasehq/socketbase/pkg.git
 
 # Navigate to the project directory
 cd socketbase
@@ -95,7 +95,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Support
 
-- Create an issue in the [Issue Tracker](https://github.com/socketbase/socketbase/issues)
+- Create an issue in the [Issue Tracker](https://github.com/socketbasehq/socketbase/pkg/issues)
 - Join our community discussions
 
 ---

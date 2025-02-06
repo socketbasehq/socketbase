@@ -7,8 +7,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt"
-	"github.com/socketbase/socketbase/pkg/models"
-	"github.com/socketbase/socketbase/pkg/modules/users"
+	"github.com/socketbasehq/socketbase/pkg/pkg/models"
+	"github.com/socketbasehq/socketbase/pkg/pkg/modules/users"
 	"golang.org/x/crypto/bcrypt"
 )
 

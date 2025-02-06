@@ -2,9 +2,9 @@ package apps
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/socketbase/socketbase/middlewares"
-	"github.com/socketbase/socketbase/pkg/server"
-	"github.com/socketbase/socketbase/pkg/types"
+	"github.com/socketbasehq/socketbase/pkg/middlewares"
+	"github.com/socketbasehq/socketbase/pkg/pkg/server"
+	"github.com/socketbasehq/socketbase/pkg/pkg/types"
 )
 
 func NewAppsModule() types.Module {
