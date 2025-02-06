@@ -24,7 +24,7 @@ docker run -p 8000:8000 socketbase/socketbase
 
 ```bash
 # Clone the repository
-git clone https://github.com/socketbasehq/socketbase/pkg.git
+git clone https://github.com/socketbasehq/socketbase.git
 
 # Navigate to the project directory
 cd socketbase
@@ -52,11 +52,9 @@ SocketBase is compatible with Pusher client libraries. Here's how to connect usi
 
 ```javascript
 const pusher = new Pusher('your-app-key', {
-  wsHost: 'your-socketbase-host',
-  wsPort: 8000,
-  forceTLS: true,
-  // Use these options when self-hosting
-  enabledTransports: ['ws', 'wss'],
+  wsHost: '127.0.0.1',
+  wsPort: 3000,
+  forceTLS: false,
 });
 ```
 
@@ -96,10 +94,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Support
 
 - Create an issue in the [Issue Tracker](https://github.com/socketbasehq/socketbase/pkg/issues)
-- Join our community discussions
+- Join our [Discord community](https://discord.gg/zSQyK6nmM9) for discussions
+- Star the repository to show your support
 
 ---
 
 <p align="center">
-  Made with ❤️ by [@mxvsh](https://github.com/mxvsh)
+  Made with ❤️ by <a href="https://github.com/mxvsh">mxvsh</a>
 </p>
