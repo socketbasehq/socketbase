@@ -37,7 +37,7 @@ func GetAppByID(id string) (*models.App, error) {
 
 func ListApps(userID string) ([]models.App, error) {
 	var apps []models.App
-	if err := db.DB.Where("user_id = ?", userID).Find(&apps).Error; err != nil {
+	if err := db.DB.Where("user_id = ?", userID).Order("created_at DESC").Find(&apps).Error; err != nil {
 		return nil, err
 	}
 	return apps, nil

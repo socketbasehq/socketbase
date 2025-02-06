@@ -13,7 +13,17 @@ import {
   Loader2,
   ArrowLeft,
 } from 'lucide-react';
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import {
+  Link,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+  useParams,
+} from 'react-router-dom';
+import AppOverview from './id/overview';
+import AppKeys from './id/keys';
+import { Button } from '@socketbase/components/ui/button';
 
 const sidebarItems = [
   {
@@ -83,6 +93,20 @@ function AppEditorPage() {
     );
   }
 
+  if (!data?.data) {
+    return (
+      <div className="flex flex-col justify-center items-center h-60">
+        <h1 className="text-2xl font-bold">App not found</h1>
+        <p className="text-sm text-muted-foreground">
+          The app you are looking for does not exist.
+        </p>
+        <Link to="/apps" className="mt-4">
+          <Button variant={'outline'}>Go to apps</Button>
+        </Link>
+      </div>
+    );
+  }
+
   return (
     <div>
       <div className="flex items-center gap-2">
@@ -91,7 +115,7 @@ function AppEditorPage() {
           className="cursor-pointer"
           size={20}
         />
-        <h1 className="text-2xl font-bold">{data?.data.name}</h1>
+        <h1 className="text-xl font-bold">{data?.data.name}</h1>
       </div>
 
       <div className="flex items-start gap-8 mt-5">
@@ -113,7 +137,12 @@ function AppEditorPage() {
             );
           })}
         </nav>
-        <main className=" flex-1 ">x</main>
+        <main className=" flex-1">
+          <Routes>
+            <Route path="/" element={<AppOverview />} />
+            <Route path="/keys" element={<AppKeys app={data?.data} />} />
+          </Routes>
+        </main>
       </div>
     </div>
   );
