@@ -20,7 +20,6 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useLoginMutation } from '@socketbase/api/auth';
 import { toast } from 'sonner';
-import { useNavigate } from 'react-router-dom';
 
 const loginSchema = z.object({
   username: z.string().min(1),
@@ -30,7 +29,6 @@ const loginSchema = z.object({
 type LoginForm = z.infer<typeof loginSchema>;
 
 function LoginPage() {
-  const navigate = useNavigate();
   const [login, { isLoading }] = useLoginMutation();
 
   const form = useForm<LoginForm>({
@@ -46,7 +44,7 @@ function LoginPage() {
       .unwrap()
       .then(() => {
         toast.success('Login successful');
-        navigate('/');
+        window.location.href = '/';
       })
       .catch(err => {
         toast.error(err.data.error ?? 'An error occurred');
