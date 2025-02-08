@@ -8,12 +8,17 @@ import (
 func NewSocketbaseModule() types.Module {
 	return types.Module{
 		Routes: server.RouteGroup{
-			Prefix: "/app",
+
 			Routes: []server.Route{
 				{
 					Method:  "GET",
-					Path:    ":id",
+					Path:    "/app/:id",
 					Handler: handleAppRoute,
+				},
+				{
+					Method:  "POST",
+					Path:    "/apps/:id/events",
+					Handler: handleAppEvent,
 				},
 			},
 		},
