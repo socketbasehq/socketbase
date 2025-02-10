@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       REGISTRY: socketbase
-      IMAGE_NAME: socketebase
+      IMAGE_NAME: socketbase
     permissions:
       packages: write
       contents: read

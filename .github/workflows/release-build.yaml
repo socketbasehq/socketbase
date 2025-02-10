@@ -1,0 +1,58 @@
+name: Release Build
+
+on:
+  release:
+    types: [created]
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    name: Build and Release
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - os: linux
+            arch: amd64
+            artifact_name: socketbase-linux-amd64
+          - os: linux
+            arch: arm64
+            artifact_name: socketbase-linux-arm64
+          - os: darwin
+            arch: amd64
+            artifact_name: socketbase-darwin-amd64
+          - os: darwin
+            arch: arm64
+            artifact_name: socketbase-darwin-arm64
+          - os: windows
+            arch: amd64
+            artifact_name: socketbase-windows-amd64.exe
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+          cache: true
+
+      - name: Build binary
+        env:
+          GOOS: ${{ matrix.os }}
+          GOARCH: ${{ matrix.arch }}
+        run: |
+          go build -v -o ${{ matrix.artifact_name }} ./cmd/...
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ./${{ matrix.artifact_name }}
+          asset_name: ${{ matrix.artifact_name }}
+          asset_content_type: application/octet-stream

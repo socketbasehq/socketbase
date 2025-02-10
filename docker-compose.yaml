@@ -1,9 +1,23 @@
 services:
   socketbase:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: socketbase/socketbase:latest
+    environment:
+      - PORT=3000
+      - DB_URL=host=db user=postgres password=postgres dbname=socketbase port=5432 sslmode=disable
+      - JWT_SECRET=2dda960562c0f533e577fd33361d4418
+      - GIN_MODE=release
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    image: postgres:16
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=socketbase
     ports:
-      - "3000:3000"
-    env_file:
-      - .env
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 1s
+      timeout: 5s
+      retries: 5
