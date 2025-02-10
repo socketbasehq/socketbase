@@ -1,9 +1,9 @@
 package migrate
 
 import (
-	"github.com/socketbasehq/socketbase/pkg/pkg/config"
-	"github.com/socketbasehq/socketbase/pkg/pkg/db"
-	"github.com/socketbasehq/socketbase/pkg/pkg/models"
+	"github.com/socketbasehq/socketbase/pkg/config"
+	"github.com/socketbasehq/socketbase/pkg/db"
+	"github.com/socketbasehq/socketbase/pkg/models"
 )
 
 func init() {

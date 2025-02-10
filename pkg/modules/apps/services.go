@@ -1,8 +1,8 @@
 package apps
 
 import (
-	"github.com/socketbasehq/socketbase/pkg/pkg/db"
-	"github.com/socketbasehq/socketbase/pkg/pkg/models"
+	"github.com/socketbasehq/socketbase/pkg/db"
+	"github.com/socketbasehq/socketbase/pkg/models"
 )
 
 func CreateApp(name string, userID string) (*models.App, error) {

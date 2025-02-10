@@ -5,8 +5,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/gorilla/websocket"
-	"github.com/socketbasehq/socketbase/pkg/pkg/server"
-	"github.com/socketbasehq/socketbase/pkg/pkg/types"
+	"github.com/socketbasehq/socketbase/pkg/server"
+	"github.com/socketbasehq/socketbase/pkg/types"
 )
 
 var upgrader = websocket.Upgrader{

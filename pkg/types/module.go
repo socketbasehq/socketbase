@@ -1,7 +1,7 @@
 package types
 
 import (
-	"github.com/socketbasehq/socketbase/pkg/pkg/server"
+	"github.com/socketbasehq/socketbase/pkg/server"
 	"go.uber.org/fx"
 )
 

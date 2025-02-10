@@ -4,7 +4,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/socketbasehq/socketbase/pkg/pkg/models"
+	"github.com/socketbasehq/socketbase/pkg/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
