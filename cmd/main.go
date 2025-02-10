@@ -13,7 +13,7 @@ var rootCmd = &cobra.Command{
 Built with Go, it provides a reliable and scalable solution for developers who want 
 to maintain control over their real-time infrastructure.`,
 	Run: func(cmd *cobra.Command, args []string) {
-
+		cmd.Help()
 	},
 }
 
