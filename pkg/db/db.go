@@ -20,8 +20,24 @@ func ConnectDB() {
 		log.Fatal("Failed to connect to DB:", err)
 	}
 
-	err = DB.AutoMigrate(&models.User{})
+	DB.AutoMigrate(&models.User{})
+	DB.AutoMigrate(&models.App{})
+
+	CreateAdminUser()
+}
+
+func CreateAdminUser() {
+	user := models.User{
+		Username: "admin",
+		Password: "admin",
+	}
+
+	if DB.Where("username = ?", user.Username).First(&user).Error == nil {
+		return
+	}
+
+	err := DB.Create(&user).Error
 	if err != nil {
-		log.Fatal("Failed to migrate database:", err)
+		log.Fatal("Failed to create admin user:", err)
 	}
 }
