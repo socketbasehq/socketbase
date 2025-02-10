@@ -2,9 +2,10 @@ package server
 
 import (
 	"bytes"
+	"embed"
+	"io/fs"
 	"log"
 	"net/http"
-	"os"
 
 	"github.com/gin-gonic/gin"
 	"go.uber.org/fx"
@@ -27,6 +28,9 @@ type ServerParams struct {
 	fx.In
 	RouteGroups []RouteGroup `group:"routes"`
 }
+
+//go:embed dist
+var DistDir embed.FS
 
 func NewServer(params ServerParams) *gin.Engine {
 	app := gin.Default()
@@ -52,19 +56,23 @@ func NewServer(params ServerParams) *gin.Engine {
 		}
 	}
 
-	fileServer := http.FileServer(http.Dir("dist"))
+	staticFiles, err := fs.Sub(DistDir, "dist")
+	if err != nil {
+		log.Fatal(err)
+	}
+	fileServer := http.FileServer(http.FS(staticFiles))
 
 	app.NoRoute(func(c *gin.Context) {
 		if exists(c.Request.URL.Path) {
 			fileServer.ServeHTTP(c.Writer, c.Request)
 		} else {
-			index, err := os.Open("dist/index.html")
+			index, err := staticFiles.Open("index.html")
 			if err != nil {
 				log.Fatal(err)
 			}
 			defer index.Close()
 
-			content, err := os.ReadFile("dist/index.html")
+			content, err := fs.ReadFile(staticFiles, "index.html")
 			if err != nil {
 				log.Fatal(err)
 			}
@@ -82,6 +90,6 @@ func NewServer(params ServerParams) *gin.Engine {
 }
 
 func exists(path string) bool {
-	_, err := os.Open("dist" + path)
+	_, err := DistDir.Open("dist" + path)
 	return err == nil
 }
