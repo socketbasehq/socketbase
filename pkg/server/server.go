@@ -1,6 +1,11 @@
 package server
 
 import (
+	"bytes"
+	"log"
+	"net/http"
+	"os"
+
 	"github.com/gin-gonic/gin"
 	"go.uber.org/fx"
 )
@@ -47,5 +52,36 @@ func NewServer(params ServerParams) *gin.Engine {
 		}
 	}
 
+	fileServer := http.FileServer(http.Dir("dist"))
+
+	app.NoRoute(func(c *gin.Context) {
+		if exists(c.Request.URL.Path) {
+			fileServer.ServeHTTP(c.Writer, c.Request)
+		} else {
+			index, err := os.Open("dist/index.html")
+			if err != nil {
+				log.Fatal(err)
+			}
+			defer index.Close()
+
+			content, err := os.ReadFile("dist/index.html")
+			if err != nil {
+				log.Fatal(err)
+			}
+
+			stat, err := index.Stat()
+			if err != nil {
+				log.Fatal(err)
+			}
+
+			http.ServeContent(c.Writer, c.Request, "index.html", stat.ModTime(), bytes.NewReader(content))
+		}
+	})
+
 	return app
+}
+
+func exists(path string) bool {
+	_, err := os.Open("dist" + path)
+	return err == nil
 }
