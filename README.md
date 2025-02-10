@@ -1,4 +1,19 @@
-# SocketBase
+<p align="center">
+  <a href="https://botmate.dev">
+    <img src="./public/logo-rounded.svg" width="80px" alt="BotMate logo" />
+  </a>
+</p>
+
+<h3 align="center">
+  Open-source, self-hosted alternative to Pusher Channels.
+</h3>
+<p align="center">
+Enables real-time bidirectional communication in your applications with web based dashboard.
+</p>
+
+<p align="center">
+<a href="https://docs.socketbase.dev">Documentation</a> · <a href="https://t.me/+qxlkQnPIc4g0ZjI9">Need help?</a>
+</p>
 
 SocketBase is an open-source, self-hosted alternative to Pusher Channels that enables real-time bidirectional communication in your applications. Built with Go, it provides a reliable and scalable solution for developers who want to maintain control over their real-time infrastructure.
 
