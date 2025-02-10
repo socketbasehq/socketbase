@@ -1,14 +1,11 @@
 services:
   socketbase:
     image: socketbase/socketbase:latest
-    environment:
-      - PORT=3000
-      - DB_URL=host=db user=postgres password=postgres dbname=socketbase port=5432 sslmode=disable
-      - JWT_SECRET=2dda960562c0f533e577fd33361d4418
-      - GIN_MODE=release
     depends_on:
       db:
         condition: service_healthy
+    volumes:
+      - ./config.yaml:/app/config.yaml
   db:
     image: postgres:16
     environment:
