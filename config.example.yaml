@@ -1,0 +1,10 @@
+server:
+  host: 'localhost'
+  port: 9750
+
+database:
+  user: 'socketbase'
+  pass: 'socketbase'
+  host: 'localhost'
+  port: 5432
+  name: 'socketbase'

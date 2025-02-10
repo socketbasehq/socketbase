@@ -20,6 +20,5 @@ to maintain control over their real-time infrastructure.`,
 func main() {
 	config.LoadEnvs()
 	rootCmd.AddCommand(startCmd)
-	rootCmd.AddCommand(migrateCmd)
 	rootCmd.Execute()
 }
