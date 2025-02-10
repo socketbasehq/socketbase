@@ -22,8 +22,8 @@ var startCmd = &cobra.Command{
 			fx.Provide(config.NewConfig),
 			fx.Provide(server.NewServer),
 			fx.Invoke(func(app *gin.Engine, cfg *config.Config) {
-				dns := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", cfg.Database.Host, cfg.Database.Port, cfg.Database.Username, cfg.Database.Password, cfg.Database.Name)
-				db.ConnectDB(dns)
+				dsn := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", cfg.Database.Host, cfg.Database.Port, cfg.Database.Username, cfg.Database.Password, cfg.Database.Name)
+				db.ConnectDB(dsn)
 				auth.CreateAdminUser()
 				go app.Run(cfg.Server.Host + ":" + cfg.Server.Port)
 			}),
