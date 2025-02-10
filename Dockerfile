@@ -19,8 +19,8 @@ RUN bun run build
 
 FROM golang:1.23-alpine AS server_base
 WORKDIR /app
-COPY --from=builder /app/dist .
 COPY . .
+COPY --from=builder /app/dist ./pkg/server/dist
 RUN go build -o socketbase ./cmd/...
 
 FROM server_base AS server
