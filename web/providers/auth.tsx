@@ -2,7 +2,7 @@ import { useAuth } from '@socketbase/lib/hooks/use-auth';
 import { Loader2 } from 'lucide-react';
 import { Outlet, useNavigate } from 'react-router-dom';
 
-export function AuthProvider() {
+function AuthProvider() {
   const navigate = useNavigate();
   const { isLoading, error } = useAuth();
 
@@ -27,3 +27,5 @@ export function AuthProvider() {
 
   return <Outlet />;
 }
+
+export default AuthProvider;

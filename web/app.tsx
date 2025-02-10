@@ -1,11 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
-import IndexPage from '@socketbase/pages/index';
-
-import { AuthProvider } from './providers/auth';
+import loadable from '@loadable/component';
+import AuthProvider from './providers/auth';
 import MainLayout from './components/layout-main';
-import LoginPage from './pages/login';
-import AppsIndexPage from './pages/apps';
-import AppEditorPage from './pages/apps/editor';
+
+const IndexPage = loadable(() => import('@socketbase/pages/index'));
+const LoginPage = loadable(() => import('./pages/login'));
+const AppsIndexPage = loadable(() => import('./pages/apps'));
+const AppEditorPage = loadable(() => import('./pages/apps/editor'));
 
 function App() {
   return (
