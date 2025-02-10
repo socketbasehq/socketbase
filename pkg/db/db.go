@@ -2,7 +2,6 @@ package db
 
 import (
 	"log"
-	"os"
 
 	"github.com/socketbasehq/socketbase/pkg/models"
 	"gorm.io/driver/postgres"
@@ -11,8 +10,7 @@ import (
 
 var DB *gorm.DB
 
-func ConnectDB() {
-	dsn := os.Getenv("DB_URL")
+func ConnectDB(dsn string) {
 	var err error
 	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 
@@ -22,5 +20,4 @@ func ConnectDB() {
 
 	DB.AutoMigrate(&models.User{})
 	DB.AutoMigrate(&models.App{})
-
 }
